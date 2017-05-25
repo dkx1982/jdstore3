@@ -1,26 +1,110 @@
-<div class="row">
-  <div class="col-md-6">
-    <% if @product.image.present? %>
-      <%= image_tag(@product.image.medium.url, class:"thumbnail")%>
+
+
+
+<div class="card">
+
+<div class="wrapper row">
+  <div class="preview col-md-6">
+    <% if @photos.present? %>
+    <div class="preview-pic tab-content">
+    <% @photos.each_with_index do |p, index| %>
+      <% if index == 0 %>
+      <div class="tab-pane active" id="pic-<%= index  %>" >
+        <%= image_tag(p.avatar.medium.url)%>
+      </div>
+
+      <% else %>
+      <div class="tab-pane" id="pic-<%= index  %>" >
+        <%= image_tag(p.avatar.medium.url)%>
+      </div>
+      <% end %>
+    <% end %>
+    </div>
+    <!-- 小图 -->
+    <ul class="preview-thumbnail nav nav-tabs">
+      <% @photos.each_with_index do |p, index| %>
+        <% if index == 0 %>
+        <li class="active"><a data-target="#pic-<%= index  %>" data-toggle="tab">
+          <%= image_tag(p.avatar.thumb.url)%>
+        </a></li>
+
+        <% else %>
+        <li><a data-target="#pic-<%= index  %>" data-toggle="tab">
+          <%= image_tag(p.avatar.thumb.url)%>
+        </a></li>
+        <% end %>
+      <% end %>
+    </ul>
+
+      <%#= image_tag(@product.image.medium.url, class:"thumbnail")%>
     <% else %>
       <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
     <% end %>
   </div>
-  <div class="col-md-6">
-    <h2><%= @product.title %></h2>
-    <div style="height:100px;">
-      <p>
-        <%= @product.description %>
-      </p>
+
+  <!--文字描述-->
+  <div class="details col-md-6">
+    <h3 class="product-title"><%= @product.title %></h3>
+    <div class="rating">
+      <div class="stars">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+      </div>
+      <span class="review-no">41 reviews</span>
     </div>
-    <div>数量：<%= @product.quantity %></div>
+
+    <p class="product-description"><%= @product.description %></p>
+
+    <h4>current price:<span><%= @product.price %></span></h4>
+
     <div class="product-price">¥<%= @product.price %></div>
-    <div class="pull-right">
-      <% if @product.quantity.present? && @product.quantity > 0 %>
-      <%= link_to "加入购物车", add_to_cart_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg btn-danger"%>
-      <% else %>
-      以销售一空，无法购买
-      <% end %>
+    <div class="action">
+
+      <%= link_to "加入购物车", add_to_cart_product_path(@product), :method => :post, :class => "add-to-cart btn btn-default"%>
+
     </div>
+  </div>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+<!-- Nav tabs -->
+    <div class="card">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">模版介绍</a></li>
+        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">视频预览</a></li>
+        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">分镜头</a></li>
+        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">留言板</a></li>
+      </ul>
+
+<!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="home">
+        <%= @product.description %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="profile">
+        <div class="dkx-fen">
+        <embed src='http://player.youku.com/player.php/sid/XMjc3OTM0NTA3Ng==/v.swf' allowFullScreen='true' quality='high' width='480' height='400' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="messages">
+        <div class="dkx-fen-v">
+          <% if @photos.present? %>
+          <% @photos.each do |p| %>
+          <div class="dkx-fen-sub" >
+            <%= image_tag(p.avatar.medium.url)%>
+          </div>
+          <% end %>
+          <% else %>
+          <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
+          <% end %>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="settings">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..
+      </div>
+    </div>
+  </div>
   </div>
 </div>

@@ -15,7 +15,9 @@
   <%= f.input :price %>
 </div>
 <div class="group">
-  <%= f.input :image, as: :file %>
+  <%#= f.input :image, as: :file %>
+  <%= f.label :avatar %><br>
+  <%= f.file_field :avatar, :multiple => true, name: "photos[avatar][]"%>
 </div>
 <%= f.submit "创建新品", data:{disable_with: "Submitting..."}%>
 <% end %>
