@@ -10,6 +10,9 @@
   <%= f.input :youku %>
 </div>
 <div class="group">
+  <%= f.input :changjing_id,label:'使用场景' ,collection:@changjings.all.map{|x| [x.name, x.id]}, as: :select %>
+</div>
+<div class="group">
   <%= f.input :price %>
 </div>
 <% if @product.photos.present? %>

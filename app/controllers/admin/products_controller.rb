@@ -29,7 +29,7 @@ class Admin::ProductsController < ApplicationController
   end
   def edit
     @product = Product.find(params[:id])
-
+    @changjings = Changjing.all
   end
   def update
     @product = Product.find(params[:id])
@@ -50,6 +50,6 @@ class Admin::ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:title, :description, :price, :photos['avatar'], :youku)
+    params.require(:product).permit(:title, :changjing_id, :description, :price, :photos['avatar'], :youku)
   end
 end
