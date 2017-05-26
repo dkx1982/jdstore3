@@ -54,7 +54,7 @@
       <span class="review-no">41 reviews</span>
     </div>
 
-    <p class="product-description"><%= @product.description %></p>
+    <p class="product-description"><%= simple_format(@product.description) %></p>
 
     <h4>current price:<span><%= @product.price %></span></h4>
 
@@ -80,16 +80,19 @@
 
 <!-- Tab panes -->
     <div class="tab-content">
+      <!-- 模版介绍 -->
       <div role="tabpanel" class="tab-pane active" id="home">
-        <%= @product.description %>
+        <%= simple_format(@product.description) %>
       </div>
+      <!-- 视频预览 -->
       <div role="tabpanel" class="tab-pane" id="profile">
         <div class="dkx-fen">
-        <embed src='http://player.youku.com/player.php/sid/XMjc3OTM0NTA3Ng==/v.swf' allowFullScreen='true' quality='high' width='480' height='400' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
+          <embed src='<%= @product.youku %>' allowFullScreen='true' quality='high' width='720' height='576' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
         </div>
       </div>
+      <!-- 分镜头 -->
       <div role="tabpanel" class="tab-pane" id="messages">
-        <div class="dkx-fen-v">
+        <div class="dkx-fen">
           <% if @photos.present? %>
           <% @photos.each do |p| %>
           <div class="dkx-fen-sub" >
@@ -101,8 +104,37 @@
           <% end %>
         </div>
       </div>
+      <!-- 留言板 -->
       <div role="tabpanel" class="tab-pane" id="settings">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..
+        <% if @posts.present? %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>文章内容</th>
+              <th>发表者</th>
+              <th>发表时间</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @posts.each do |post| %>
+            <tr>
+              <td><%= simple_format(post.content) %></td>
+              <td><%= post.user.email %></td>
+              <td><%= post.created_at %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <% end %>
+        <%= simple_form_for [@product,@post] do |f| %>
+        <div class="form-group">
+          <%= f.input :content, input_html: { class: "form-control"} %>
+        </div>
+        <div class="form-actions">
+          <%= f.submit "留言", disable_with: "Submiting...", class: "btn btn-primary"%>
+        </div>
+        <% end %>
+
       </div>
     </div>
   </div>
