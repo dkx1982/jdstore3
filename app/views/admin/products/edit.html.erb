@@ -10,7 +10,7 @@
   <%= f.input :youku %>
 </div>
 <div class="group">
-  <%= f.input :changjing_id,label:'使用场景' ,collection:@changjings.all.map{|x| [x.name, x.id]}, as: :select %>
+  <%= f.input :changjing_ids,label:'分类', as: :check_boxes, collection: @changjings.map{|x| [x.name,x.id]}  %>
 </div>
 <div class="group">
   <%= f.input :price %>

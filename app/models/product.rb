@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   has_many :photos
   accepts_nested_attributes_for :photos
   has_many :posts
-  belongs_to :changjing
+  has_many :dkxes
+  has_many :changjings, :through => :dkxes
 
 end

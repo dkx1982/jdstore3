@@ -1,3 +1,4 @@
 class Changjing < ApplicationRecord
-  has_many :products
+  has_many :dkxes
+  has_many :products, :through => :dkxes
 end

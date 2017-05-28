@@ -54,7 +54,12 @@
       <span class="review-no">41 reviews</span>
     </div>
 
-    <p class="product-description"><%= @product.changjing.name %></p>
+    <p class="product-description">
+      <% @product.changjings.each do |p| %>
+        <%= p.name %>
+      <% end %>
+
+    </p>
 
     <h4>current price:<span><%= @product.price %></span></h4>
 

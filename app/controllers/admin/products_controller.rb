@@ -13,6 +13,7 @@ class Admin::ProductsController < ApplicationController
   def new
     @product = Product.new
     @photo = @product.photos.build
+    @changjings = Changjing.all
   end
   def create
     @product = Product.new(product_params)
@@ -21,8 +22,9 @@ class Admin::ProductsController < ApplicationController
         params[:photos]['avatar'].each do |a|
           @photo = @product.photos.create(:avatar => a)
         end
-      redirect_to admin_products_path
+        redirect_to admin_products_path
       end
+      redirect_to admin_products_path
     else
       render :new
     end
@@ -50,6 +52,6 @@ class Admin::ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:title, :changjing_id, :description, :price, :photos['avatar'], :youku)
+    params.require(:product).permit(:title, :description, :price, :photos['avatar'], :youku,:changjing_ids => [])
   end
 end
