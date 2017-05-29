@@ -1,0 +1,27 @@
+<h2>分类管理</h2>
+<%= simple_form_for [:admin, @changjing] do |f| %>
+<div class="form-group">
+  <%= f.input :name, input_html: { class: "form-control"} %>
+  <%= f.submit "添加分类元素", disable_with: "Submiting...", class: "btn btn-primary"%>
+</div>
+<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>分类名称</th>
+      <th>模版数量</th>
+      <th>分类编辑</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @changjings.each do |changjing|%>
+      <tr>
+        <td><%= link_to changjing.id, admin_changjing_path(changjing) %></td>
+        <td><%= changjing.name %></td>
+        <td><%= changjing.products.count %></td>
+        <td><%= link_to "edit", edit_admin_changjing_path(changjing)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

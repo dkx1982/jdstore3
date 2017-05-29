@@ -54,9 +54,11 @@
       <span class="review-no">41 reviews</span>
     </div>
 
-    <p class="product-description">
+    <p class="product-description">适用于：
       <% @product.changjings.each do |p| %>
+      <span class="label label-default">
         <%= p.name %>
+      </span>
       <% end %>
 
     </p>
