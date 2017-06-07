@@ -1,6 +1,10 @@
 
+html {
+    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
 .label {
-  margin:.2em;
+  margin-right:.2em;
 
 }
 .preview {
@@ -15,7 +19,7 @@
           flex-direction: column; }
   @media screen and (max-width: 996px) {
     .preview {
-      margin-bottom: 20px; } }
+      margin-bottom: 1px; } }
 
 .preview-pic {
   -webkit-box-flex: 1;
@@ -27,8 +31,8 @@
   border: none;
   margin-top: 15px; }
   .preview-thumbnail.nav-tabs li {
-    width: 18%;
-    margin-right: 2.5%; }
+    width: 10%;
+    margin-right: 5%; }
     .preview-thumbnail.nav-tabs li img {
       max-width: 100%;
       display: block; }
@@ -65,9 +69,9 @@
             animation-duration: .3s; }
 
 .card {
-  margin-top: 50px;
+  margin-top: 20px;
   background: #eee;
-  padding: 3em;
+  padding: 2em;
   line-height: 1.5em; }
 
 @media screen and (min-width: 997px) {
@@ -105,7 +109,7 @@
   margin-bottom: 15px; }
 
 .product-title {
-  margin-top: 0; }
+  margin-top: 10; }
 
 .size {
   margin-right: 10px; }
@@ -184,5 +188,63 @@
         .nav-tabs > li > a::after { content: ""; background: #4285F4; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
     .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
 .tab-nav > li > a::after { background: #21527d none repeat scroll 0% 0%; color: #fff; }
-.tab-pane { padding: 15px 0; }
-.tab-content{padding:20px}
+.tab-pane { padding: 0 0; }
+.tab-content{padding: 0px}
+
+/*---------- product-index------*/
+h5 {
+    font-size: 1.28571429em;
+    font-weight: 700;
+    line-height: 1.2857em;
+    margin: 0;
+}
+.card-index {
+    font-size: 1em;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+}
+.card-block-index {
+    font-size: 1em;
+    position: relative;
+    margin: 0;
+    padding: 1em;
+    border: none;
+    border-top: 1px solid rgba(34, 36, 38, .1);
+    box-shadow: none;
+}
+.card-img-top-index {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.card-title-index {
+    font-size: 1.28571429em;
+    font-weight: 700;
+    line-height: 1.2857em;
+}
+.card-text-index {
+    clear: both;
+    margin-top: .5em;
+    color: rgba(0, 0, 0, .68);
+}
+.card-footer-index {
+    font-size: 1em;
+    position: static;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    padding: .75em 1em;
+    color: rgba(0, 0, 0, .4);
+    border-top: 1px solid rgba(0, 0, 0, .05) !important;
+    background: #fff;
+}
+.float-right{
+  float: right;
+}
+.meta {
+    font-size: 1em;
+    color: rgba(0, 0, 0, .4);
+}

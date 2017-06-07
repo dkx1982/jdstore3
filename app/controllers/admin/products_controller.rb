@@ -22,7 +22,7 @@ class Admin::ProductsController < ApplicationController
         params[:photos]['avatar'].each do |a|
           @photo = @product.photos.create(:avatar => a)
         end
-        redirect_to admin_products_path
+        return redirect_to admin_products_path
       end
       redirect_to admin_products_path
     else

@@ -65,7 +65,7 @@
 
     <h4>current price:<span><%= @product.price %>¥</span></h4>
 
-    
+
     <div class="action">
 
       <%= link_to "加入购物车", add_to_cart_product_path(@product), :method => :post, :class => "add-to-cart btn btn-default"%>
@@ -101,11 +101,11 @@
       <div role="tabpanel" class="tab-pane" id="messages">
         <div class="dkx-fen">
           <% if @photos.present? %>
-          <% @photos.each do |p| %>
-          <div class="dkx-fen-sub" >
-            <%= image_tag(p.avatar.medium.url)%>
-          </div>
-          <% end %>
+            <% @photos.each do |p| %>
+              <div class="dkx-fen-sub" >
+                <%= image_tag(p.avatar.medium.url)%>
+              </div>
+            <% end %>
           <% else %>
           <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
           <% end %>
